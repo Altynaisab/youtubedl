@@ -3,4 +3,4 @@ from django.http import HttpResponse
 
 
 def field(request):
-    return render(request, 'field.html', {})
+    return render(request, 'download/field.html', {})
