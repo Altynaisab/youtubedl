@@ -1,21 +1,22 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from .forms import download
+from .forms import Download
 import youtube_dl
 
 
 def field(request):
     if request.method == 'POST':
-        form = download(request.POST)
+        form = Download(request.POST)
         if form.is_valid():
             link = form.cleaned_data
             ydl_opts = {}
             with youtube_dl.YoutubeDL(ydl_opts) as ydl:
-                ydl.download(link['link'])
+                ydl.download([link['link']])
+            return HttpResponseRedirect('/thanks/')
+    else:
+        form = Download()
 
-        else:
-            form = download()
-
-        return render(request, 'download/field.html', {'form': form})
+    return render(request, 'field.html', {'form': form})
 
 
 

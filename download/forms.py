@@ -1,5 +1,5 @@
 from django import forms
 
 
-class download(forms.Form):
+class Download(forms.Form):
     link = forms.CharField(label='link', max_length = 100)
