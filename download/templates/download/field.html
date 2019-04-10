@@ -1,16 +1,14 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Converter</title>
+</head>
 <body>
-  <head>
-{{ posts}}
-<'form = action', 'method=GET'>
-<title>Download mp3</title>
-
-  <form>
-  Download:<br>
-  <input type="text" download="Enter the link below" value=":link:"><br>
-
-  <input type="submit" value="DOWNLOAD">
-</form>
-  </head>
+    <form method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Download">
+    </form>
 </body>
 </html>
