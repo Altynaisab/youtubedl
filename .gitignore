@@ -1,5 +1,6 @@
 *secrets.py
 /.env
+/myenv
 *.pyc
 *~
 __pycache__
