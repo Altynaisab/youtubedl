@@ -12,7 +12,6 @@ def field(request):
             ydl_opts = {}
             with youtube_dl.YoutubeDL(ydl_opts) as ydl:
                 ydl.download([link['link']])
-            return HttpResponseRedirect('/thanks/')
     else:
         form = Download()
 

@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+  <title>DL mp3</title>
     <meta charset="UTF-8">
-    <title>Converter</title>
 </head>
 <body>
+    <div>
+      <h1><a href="/">  Here you can convert and download mp3 file from youtube.com</a></h1>
+    </div>
     <form method="post">
         {% csrf_token %}
         {{ form }}
