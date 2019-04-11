@@ -9,7 +9,19 @@ def field(request):
         form = Download(request.POST)
         if form.is_valid():
             link = form.cleaned_data
-            ydl_opts = {}
+            ydl_opts = {
+            'format': 'bestaudio/best',
+    'postprocessors': [{
+        'key': 'FFmpegExtractAudio',
+        'preferredcodec': 'wav',
+        'preferredquality': '192'
+    }],
+    'postprocessor_args': [
+        '-ar', '16000'
+    ],
+    'prefer_ffmpeg': True,
+    'keepvideo': True
+            }
             with youtube_dl.YoutubeDL(ydl_opts) as ydl:
                 ydl.download([link['link']])
     else:

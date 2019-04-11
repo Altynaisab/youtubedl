@@ -1,6 +1,9 @@
 body {
-    background-color: lightblue;
-}
+  background-image: url("images/music.jpg");
+  background-color: #F6F5C2;
+    }
 h1 a, h2 a {
-    color: #C25100;
+    color: #F5ED09;
+    font-family: 'Raleway';
+
 }
