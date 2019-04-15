@@ -125,4 +125,4 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'assets/download/field.css'),  # Here you tell django to look for a folder named 'assets'
-]
+                    ]
