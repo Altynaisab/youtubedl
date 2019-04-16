@@ -1,10 +1,14 @@
 body {
-  padding-left: 25px;
-  background-image: url("images/music.jpg");
-  background-color: #6B390E;
-    }
+    padding-left: 15px;
+    background-color: #D3D3D3;
+}
 h1 a, h2 a {
-    color: #F5ED09;
-    font-family: 'Raleway';
-
+    padding-left: 15px;
+    color: #F08080;
+    font-family: 'Montserrat';
+}
+.page-header {
+  background-color: #ADD8E6;
+  margin-top: 0;
+  padding: 20px 20px 20px 40px;
 }

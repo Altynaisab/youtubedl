@@ -1,23 +1,11 @@
 <!DOCTYPE html>
+{% extends 'base.html' %}
 {% load static %}
-<html lang="en">
-<head>
-  <title>DL mp3</title>
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-  <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  <link rel="stylesheet" href="{% static 'css/field.css' %}">
-    <meta charset="UTF-8">
-</head>
-<body>
-    <div>
-      <h1><a href="/">paste link below</a></h1>
-    </div>
-    <form method="post">
-        {% csrf_token %}
-        {{ form }}
-        <input type="submit" value="download">
-    </form>
-      <img src="{% static "images/music.jpg" %}" >
-</body>
-</html>
+{% block content %}
+
+<form method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="download">
+</form>
+{% endblock%}
