@@ -1,11 +1,32 @@
 <!DOCTYPE html>
-{% extends 'base.html' %}
 {% load static %}
-{% block content %}
-
-<form method="post">
-    {% csrf_token %}
-    {{ form }}
-    <input type="submit" value="download">
-</form>
-{% endblock%}
+<html lang="en">
+    <head>
+        <title>DL mp3</title>
+        <link href="//fonts.googleapis.com/css?family=Montserrat&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{% static 'css/field.css' %}">
+    </head>
+    <body>
+    <div class="page-header">
+        <h1><a href="/">Paste link below</a></h1>
+    </div>
+    <form method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="download">
+    </form>
+    <form action="/download/history">
+            <input  type="submit" value="History">
+        </form>
+    <div class="content container">
+        <div class="row">
+            <div class="col-md-8">
+            {% block content %}
+            {% endblock %}
+            </div>
+        </div>
+    </div>
+</body>
+</html>
