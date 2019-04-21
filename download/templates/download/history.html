@@ -13,8 +13,9 @@
   <div class="list">
       <h1><a href="/">History</a></h1>
   </div>
-    {% for thing in options %}
-    <li> {{ thing }}</li>
-    {% endfor %}
+  {% for thing in options %}
+    <li> {{ thing.name }}</li>
+     {{ thing.pub_date }}
+  {% endfor %}
 </body>
 </html>
