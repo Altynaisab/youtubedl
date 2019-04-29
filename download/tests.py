@@ -3,7 +3,7 @@ import youtube_dl
 import os
 from .views import getaudio
 
-def getaudio(temp):
+def getaudio(temp, x):
      ydl_opts = {
      'format': 'bestaudio/best',
      'postprocessors': [
@@ -11,13 +11,15 @@ def getaudio(temp):
       'preferredquality': '192',
      },
      {'key': 'FFmpegMetadata'},
-         ],
-                 }
-
+         ] }
     if x == 0:
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
-            meta = ydl.extract_info(temp, download = False)
-        else:
-            with youtube_dl.YoutubeDL(ydl_opts) as ydl:
-                meta = ydl.extract_info(temp)
-     return meta['title']
+            meta = ydl.extract_info(
+                temp, download=False,
+            )
+    else:
+        with youtube_dl.YoutubeDL(ydl_opts) as ydl:
+            meta = ydl.extract_info(
+                temp
+            )
+    return meta['title']
