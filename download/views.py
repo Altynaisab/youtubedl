@@ -1,10 +1,11 @@
 from __future__ import unicode_literals
-from django.http import HttpResponseRedirect
+from django.http import HttpResponse
 from django.shortcuts import render
 from .forms import Download
 import youtube_dl
 from .models import Data
 from django.utils.timezone import now
+from django.core.mail import send_mail
 
 
 def getaudio(temp):
@@ -29,6 +30,8 @@ def field(request):
         form = Download(request.POST)
         if form.is_valid():
             temp = form.cleaned_data['link']
+            email = form.cleaned_data['email']
+            
             x = getaudio(temp)
 
     else:
