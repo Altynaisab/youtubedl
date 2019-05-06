@@ -6,6 +6,9 @@ import youtube_dl
 from .models import Data
 from django.utils.timezone import now
 from django.core.mail import send_mail
+import smtplib
+from youtubedl.settings import BASE_DIR
+
 
 
 def getaudio(temp):
@@ -31,13 +34,18 @@ def field(request):
         if form.is_valid():
             temp = form.cleaned_data['link']
             email = form.cleaned_data['email']
-            
+
             x = getaudio(temp)
 
     else:
         form = Download()
 
     return render(request, 'field.html', {'form': form})
+
+def get_email(email):
+    msg = EmailMessage('mp3-converter', 'http://127.0.0.1:8000/youtubedl/download', to=[email])
+    msg.send()
+    return render(request, 'download.html',  {'link': file_dir})
 
 def history(request):
     return render(request, 'history.html', {'options': Data.objects.all()})
