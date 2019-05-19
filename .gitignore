@@ -1,10 +1,17 @@
 *secrets.py
 /.env
+/youtubedl/env/
 /myenv/
 *.pyc
 *~
 __pycache__
+youtubedl/__pycache__
+/media/
 myvenv
 db.sqlite3
 /static
 .DS_Store
+/redis
+/celery
+download/__init__.py
+download/migrations

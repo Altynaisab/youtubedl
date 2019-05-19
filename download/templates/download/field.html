@@ -15,8 +15,9 @@
         <h2>When your file is ready, you will receive a notification to the email</h2>
     </div>
     <form method="post">
+      <form action="/download/upload">
         {% csrf_token %}
-        {{ form }}
+        {{ form.as_p }}
         <input type="submit" value="START">
     </form>
     <form action="/download/history">
