@@ -1,8 +1,7 @@
-from celery.decorators import task
+from celery import Celery
 import youtube_dl
 import os
 from youtubedl.settings import BASE_DIR
-from config.celery import app
 from .models import Data
 from django.core.mail import EmailMessage
 from validate_email import validate_email
