@@ -2,6 +2,11 @@
 {% load static %}
 <html lang="en">
     <head>
+      <script>
+        function showAlert() {
+            alert("Your request is accepted. When the file is ready, the link will be sent to your email")
+        }
+    </script>
         <title>YouTube to MP3</title>
         <meta charset="UTF-8">
         <link href="//fonts.googleapis.com/css?family=Montserrat&subset=latin,latin-ext" rel="stylesheet" type="text/css">
@@ -14,11 +19,10 @@
         <h1><a href="/">Paste link below</a></h1>
         <h2>When your file is ready, you will receive a notification to the email</h2>
     </div>
-    <form method="post">
-      <form action="/download/upload">
+    <form method = "post" >
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" value="START">
+        <input type="submit" value="START" onclick="showAlert()">
     </form>
     <form action="/download/history">
         <input  type="submit" value="HISTORY">

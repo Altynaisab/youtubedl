@@ -1,27 +1,69 @@
 from django.test import TestCase
+from .views import get_email
+from .views import val_email
 import youtube_dl
 import os
-from .views import getaudio
-from .models import Data
 from youtubedl.settings import BASE_DIR
 
 
-def getaudio(temp, x):
+class GetEmailTest(TestCase):
 
+    def test_email_sent(self):
+        temp = get_email('testing6566@gmail.com', 'seit2504')
+        self.assertEqual(temp, 1)
+
+    def test_email_not_sent(self):
+        temp = get_email('', 'seit2504')
+        self.assertEqual(temp, 0)
+
+
+class EmailInvalidTest(TestCase):
+
+    def test_email_invalid(self):
+        temp = val_email('tyufrtfghhf@gmail.com')
+        self.assertEqual(temp, None)
+        temp = val_email('testing6566@gmail.com')
+        self.assertEqual(temp, None)
+
+    def test_email_valid(self):
+        temp = val_email('altynai.sabetova@gmail.com')
+        self.assertEqual(temp, True)
+        temp = val_email('altynai.sabetova@iaau.edu.kg')
+        self.assertEqual(temp, True)
+
+
+def get_audio(temp, x):
     ydl_opts = {
-         'format': 'bestaudio/best',
-         'postprocessors': [
-         {'key': 'FFmpegExtractAudio','preferredcodec': 'mp3',
-          'preferredquality': '192',
-         },
-         {'key': 'FFmpegMetadata'},
-             ]},
+        'keepvideo': True,
+        'format': 'bestaudio/best',
+        'postprocessors': [{
+            'key': 'FFmpegExtractAudio',
+            'preferredcodec': 'mp3',
+            'preferredquality': '192',
+        }],
+        'outtmpl': './audio/%(title)s.mp3',
+    }
 
-    if x == 0 :
-
+    if x == 0:
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
-            meta = ydl.extract_info(temp, download=False,)
+            meta = ydl.extract_info(
+                temp, download=False,
+            )
     else:
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
-            meta = ydl.extract_info(temp)
+            meta = ydl.extract_info(
+                temp
+            )
     return meta['title']
+
+
+class DownloadYoutubeTest(TestCase):
+
+    def test_title(self):
+        temp = get_audio('https://www.youtube.com/watch?v=PJVJUBvhbAY', 0)
+        self.assertEqual(temp, 'seit2504')
+
+    def test_download(self):
+        temp = get_audio('https://www.youtube.com/watch?v=PJVJUBvhbAY', 1)
+        file_dir = os.path.join(BASE_DIR, 'audio/{}.mp3'.format(temp))
+        self.assertRegexpMatches(file_dir, temp)

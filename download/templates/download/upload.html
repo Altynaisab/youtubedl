@@ -2,7 +2,7 @@
 {% load static %}
 <html lang="en">
     <head>
-        <title>Submit</title>
+        <title>Downloading</title>
         <link href="//fonts.googleapis.com/css?family=Montserrat&subset=latin,latin-ext" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
@@ -10,8 +10,7 @@
     </head>
     <body>
       <div class="page-header">
-          <h1><a href="/">File is ready</a></h1>
+          <a href={{ link }} download>Download your MP3 file by clicking this link</a>
       </div>
-    <a href={{ link }} download>Download your MP3 file by clicking this link</a>
 </body>
 </html>
